@@ -69,7 +69,7 @@ class User extends Authenticatable
      */
     public function documentsAndnote()
     {
-        return $this->morphMany('App\DocumentAndNote', 'notable');
+        return $this->morphMany(\App\DocumentAndNote::class, 'notable');
     }
 
     /**

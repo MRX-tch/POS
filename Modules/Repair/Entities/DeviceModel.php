@@ -35,7 +35,7 @@ class DeviceModel extends Model
      */
     public function createdBy()
     {
-        return $this->belongsTo('App\User', 'created_by');
+        return $this->belongsTo(\App\User::class, 'created_by');
     }
 
     /**
@@ -43,7 +43,7 @@ class DeviceModel extends Model
      */
     public function Device()
     {
-        return $this->belongsTo('App\Category', 'device_id');
+        return $this->belongsTo(\App\Category::class, 'device_id');
     }
 
     /**
@@ -51,7 +51,7 @@ class DeviceModel extends Model
      */
     public function Brand()
     {
-        return $this->belongsTo('App\Brands', 'brand_id');
+        return $this->belongsTo(\App\Brands::class, 'brand_id');
     }
 
     public static function forDropdown($business_id)

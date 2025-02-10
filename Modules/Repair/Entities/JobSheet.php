@@ -36,7 +36,7 @@ class JobSheet extends Model
      */
     public function customer()
     {
-        return $this->belongsTo('App\Contact', 'contact_id');
+        return $this->belongsTo(\App\Contact::class, 'contact_id');
     }
     
     /**
@@ -44,7 +44,7 @@ class JobSheet extends Model
      */
     public function createdBy()
     {
-        return $this->belongsTo('App\User', 'created_by');
+        return $this->belongsTo(\App\User::class, 'created_by');
     }
 
     /**
@@ -52,7 +52,7 @@ class JobSheet extends Model
      */
     public function technician()
     {
-        return $this->belongsTo('App\User', 'service_staff');
+        return $this->belongsTo(\App\User::class, 'service_staff');
     }
 
     /**
@@ -68,7 +68,7 @@ class JobSheet extends Model
      */
     public function Device()
     {
-        return $this->belongsTo('App\Category', 'device_id');
+        return $this->belongsTo(\App\Category::class, 'device_id');
     }
 
     /**
@@ -76,7 +76,7 @@ class JobSheet extends Model
      */
     public function Brand()
     {
-        return $this->belongsTo('App\Brands', 'brand_id');
+        return $this->belongsTo(\App\Brands::class, 'brand_id');
     }
 
     /**
@@ -92,7 +92,7 @@ class JobSheet extends Model
      */
     public function businessLocation()
     {
-        return $this->belongsTo('App\BusinessLocation', 'location_id');
+        return $this->belongsTo(\App\BusinessLocation::class, 'location_id');
     }
 
     /**
@@ -100,7 +100,7 @@ class JobSheet extends Model
      */
     public function invoices()
     {
-        return $this->hasMany('App\Transaction', 'repair_job_sheet_id');
+        return $this->hasMany(\App\Transaction::class, 'repair_job_sheet_id');
     }
 
     public function media()

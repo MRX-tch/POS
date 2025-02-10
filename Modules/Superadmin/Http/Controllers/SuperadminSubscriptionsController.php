@@ -189,15 +189,15 @@ class SuperadminSubscriptionsController extends BaseController
                 $subscriptions->payment_transaction_id = $input['payment_transaction_id'];
                 $subscriptions->save();
 
-                $output = array('success' => true,
+                $output = ['success' => true,
                                     'msg' => __("superadmin::lang.subcription_updated_success")
-                                );
+                                ];
             } catch (\Exception $e) {
                 \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
             
-                $output = array('success' => false,
+                $output = ['success' => false,
                             'msg' => __("messages.something_went_wrong")
-                            );
+                            ];
             }
             return $output;
         }
@@ -251,15 +251,15 @@ class SuperadminSubscriptionsController extends BaseController
                 $subscription->trial_end_date = !empty($input['trial_end_date']) ? $this->businessUtil->uf_date($input['trial_end_date']) : null;
                 $subscription->save();
 
-                $output = array('success' => true,
+                $output = ['success' => true,
                                     'msg' => __("superadmin::lang.subcription_updated_success")
-                                );
+                                ];
             } catch (\Exception $e) {
                 \Log::emergency("File:" . $e->getFile(). "Line:" . $e->getLine(). "Message:" . $e->getMessage());
             
-                $output = array('success' => false,
+                $output = ['success' => false,
                             'msg' => __("messages.something_went_wrong")
-                            );
+                            ];
             }
             return $output;
         }

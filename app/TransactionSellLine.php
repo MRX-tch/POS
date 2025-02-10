@@ -95,7 +95,7 @@ class TransactionSellLine extends Model
      */
     public function warranties()
     {
-        return $this->belongsToMany('App\Warranty', 'sell_line_warranties', 'sell_line_id', 'warranty_id');
+        return $this->belongsToMany(\App\Warranty::class, 'sell_line_warranties', 'sell_line_id', 'warranty_id');
     }
 
     public function line_tax()
