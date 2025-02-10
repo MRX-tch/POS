@@ -40,7 +40,7 @@ class Project extends Model
      */
     public function members()
     {
-        return $this->belongsToMany('App\User', 'pjt_project_members', 'project_id', 'user_id');
+        return $this->belongsToMany(\App\User::class, 'pjt_project_members', 'project_id', 'user_id');
     }
 
     /**
@@ -48,14 +48,14 @@ class Project extends Model
      */
     public function createdBy()
     {
-        return $this->belongsTo('App\User', 'created_by');
+        return $this->belongsTo(\App\User::class, 'created_by');
     }
     /**
      * Return the project lead
      */
     public function lead()
     {
-        return $this->belongsTo('App\User', 'lead_id');
+        return $this->belongsTo(\App\User::class, 'lead_id');
     }
 
     /**
@@ -63,7 +63,7 @@ class Project extends Model
      */
     public function customer()
     {
-        return $this->belongsTo('App\Contact', 'contact_id');
+        return $this->belongsTo(\App\Contact::class, 'contact_id');
     }
 
     /**
@@ -79,7 +79,7 @@ class Project extends Model
      */
     public function documentsAndnote()
     {
-        return $this->morphMany('App\DocumentAndNote', 'notable');
+        return $this->morphMany(\App\DocumentAndNote::class, 'notable');
     }
 
     /**
@@ -95,7 +95,7 @@ class Project extends Model
      */
     public function categories()
     {
-        return $this->morphToMany('App\Category', 'categorizable');
+        return $this->morphToMany(\App\Category::class, 'categorizable');
     }
 
     /**

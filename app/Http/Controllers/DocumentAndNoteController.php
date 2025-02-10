@@ -158,10 +158,10 @@ class DocumentAndNoteController extends Controller
 
         //Define all notable for main app.
         $app_notable = [
-            'App\User' => [
+            \App\User::class => [
                 'permissions' => ['view', 'create', 'delete']
             ],
-            'App\Contact' => [
+            \App\Contact::class => [
                 'permissions' => ['view', 'create', 'delete']
             ]
         ];

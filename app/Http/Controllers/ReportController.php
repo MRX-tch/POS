@@ -3530,12 +3530,12 @@ class ReportController extends Controller
             $subject_type = request()->subject_type;
             if (!empty($subject_type)) {
                 if ($subject_type == 'contact') {
-                    $activities->where('subject_type', 'App\Contact');
+                    $activities->where('subject_type', \App\Contact::class);
                 } else if($subject_type == 'user') {
-                    $activities->where('subject_type', 'App\User');
+                    $activities->where('subject_type', \App\User::class);
                 } else if(in_array($subject_type, ['sell', 'purchase', 
                     'sales_order', 'purchase_order', 'sell_return', 'purchase_return', 'sell_transfer', 'expense', 'purchase_order'])) {
-                    $activities->where('subject_type', 'App\Transaction');
+                    $activities->where('subject_type', \App\Transaction::class);
                     $activities->whereHasMorph('subject', Transaction::class, function($q) use($subject_type){
                         $q->where('type', $subject_type);
                     });
@@ -3552,13 +3552,13 @@ class ReportController extends Controller
                             ->editColumn('created_at', '{{@format_datetime($created_at)}}')
                             ->addColumn('subject_type', function($row) use($transaction_types) {
                                     $subject_type = '';
-                                    if ($row->subject_type == 'App\Contact') {
+                                    if ($row->subject_type == \App\Contact::class) {
                                         $subject_type = __('contact.contact');
-                                    } else if ($row->subject_type == 'App\User') {
+                                    } else if ($row->subject_type == \App\User::class) {
                                         $subject_type = __('report.user');
-                                    } else if ($row->subject_type == 'App\Transaction' && !empty($row->subject->type)) {
+                                    } else if ($row->subject_type == \App\Transaction::class && !empty($row->subject->type)) {
                                         $subject_type = isset($transaction_types[$row->subject->type]) ? $transaction_types[$row->subject->type] : '';
-                                    } elseif (($row->subject_type == 'App\TransactionPayment')) {
+                                    } elseif (($row->subject_type == \App\TransactionPayment::class)) {
                                        $subject_type = __('lang_v1.payment');
                                     }
                                 return $subject_type;
@@ -3571,7 +3571,7 @@ class ReportController extends Controller
                                 if (!empty($row->subject->invoice_no)) {
                                     $html .= __('sale.invoice_no') . ': ' . $row->subject->invoice_no . '<br>';
                                 }
-                                if($row->subject_type == 'App\Transaction' && !empty($row->subject) && in_array($row->subject->type, ['sell', 'purchase'])) {
+                                if($row->subject_type == \App\Transaction::class && !empty($row->subject) && in_array($row->subject->type, ['sell', 'purchase'])) {
                                     $html .= view('sale_pos.partials.activity_row', ['activity' => $row, 'statuses' => $statuses, 'shipping_statuses' => $shipping_statuses])->render();
                                 } else {
                                     $update_note = $row->getExtraProperty('update_note');
